@@ -1,24 +1,19 @@
-const prev = document.querySelector('.prev');
-const result = document.querySelector('.result');
+let addition = (x,y) => x+y;
 
-const btnNumbers = document.querySelectorAll('.number');
+let substraction = (x,y) => x-y;
 
-let number = '';
-const getValue = (e) => {
-    
-    let value = e.target.getAttribute('data-value')
+let multiplication = (x,y) => x*y;
 
-    number += value;
-    result.textContent = number;
-    console.log(result.textContent)
+let division = (x,y) => x/y;
+
+let sqrt = (x) => Math.sqrt(x);
+
+let pow = (x,y) => Math.pow(x,y);
+
+let factorial = (x) => {
+    let total = 1;
+    for(i = x; i > 0; i--){
+        total *= i;
+    };
+    return total;
 };
-
-let firstNum = () => {
-    let firstvalue = Number(result.textContent);
-    console.log(firstvalue)
-    return firstvalue;
-}
-
-
-btnNumbers.forEach(number => number.addEventListener('click', getValue))
-btnNumbers.forEach(number => number.addEventListener('click', firstNum))
