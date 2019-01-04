@@ -129,3 +129,13 @@ button:active {
     text-align: right;
    
 }
+
+@media all and (max-width:500px){
+    .right {
+        display: none;
+    }   
+
+    .left {
+        width: 100%;
+    }
+}

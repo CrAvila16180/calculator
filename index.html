@@ -6,50 +6,52 @@
     <title>Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    
 </head>
 <body>
 
 
     <aside class="left">
+
         <div class="output">
                 <div class="prev">2 + 2</div>
-                <div class="result">4</div>
+                <div class="result"></div>
         </div>
+
     <div class="buttons">
 
             <table>
                     <tr>
-                           <td> <button class="button root">√</button></td>
+                            <td> <button class="button root">√</button></td>
                             <td><button class="button pow">x<sup>y</sup></button></td>
                             <td><button class="button factorial">x!</button></td>
                             <td><button class="button del">&lt;</button></td>
                     </tr>
                     
                     <tr>
-                            <td><button class="button seven number">7</button></td>
-                            <td><button class="button eight number">8</button></td>
-                            <td><button class="button nine number">9</button></td>
+                            <td><button class="button seven number" data-value="7">7</button></td>
+                            <td><button class="button eight number" data-value="8">8</button></td>
+                            <td><button class="button nine number" data-value="9">9</button></td>
                             <td><button class="button division">÷</button></td>
                     </tr>
             
                     <tr>
-                            <td><button class="button four number">4</button></td>
-                            <td><button class="button five number">5</button></td>
-                            <td><button class="button six number">6</button></td>
+                            <td><button class="button four number" data-value="4">4</button></td>
+                            <td><button class="button five number" data-value="5">5</button></td>
+                            <td><button class="button six number" data-value="6">6</button></td>
                             <td><button class="button multiplication">×</button></td>
                     </tr>
             
                     <tr>
-                            <td><button class="button one number">1</button></td>
-                            <td><button class="button two number">2</button></td>
-                            <td><button class="button three number">3</button></td>
+                            <td><button class="button one number" data-value="1">1</button></td>
+                            <td><button class="button two number" data-value="2">2</button></td>
+                            <td><button class="button three number" data-value="3">3</button></td>
                             <td><button class="button substraction">-</button></td>
                     </tr>
             
                     <tr>
-                            <td><button class="button zero number">0</button></td>
-                           <td> <button class="button dot">.</button></td>
+                            <td><button class="button zero number" data-value="0">0</button></td>
+                           <td> <button class="button dot number" data-value=".">.</button></td>
                             <td><button class="button equal">=</button></td>
                             <td><button class="button add">+</button></td>
                     </tr>
@@ -76,6 +78,6 @@
     </aside>
 
 
-
+    <script src="main.js"></script>
 </body>
 </html>
