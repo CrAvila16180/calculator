@@ -1,19 +1,29 @@
-let addition = (x,y) => x+y;
+let viewer = document.querySelector('.displayNum'); //Where numberis displayed
+let equal = document.querySelector('.equal'); //Equal button
+let nums = Array.from(document.querySelectorAll('.number')) //NUmber buttons
+let ops = Array.from(document.querySelectorAll('.operation')) //ops buttons
 
-let substraction = (x,y) => x-y;
+let theNum = ""; //Current number
+let oldNum = ""; //First Number
+let resultNum; //result
+let operator; 
 
-let multiplication = (x,y) => x*y;
+let setNum = (e) => {
 
-let division = (x,y) => x/y;
+    if (resultNum) {
+        theNum = e.target.getAttribute('data-value');
+    } else {
+        theNum += e.target.getAttribute('data-value');
+    }
 
-let sqrt = (x) => Math.sqrt(x);
+    viewer.textContent = theNum;
+    console.log(this)
+}
 
-let pow = (x,y) => Math.pow(x,y);
+nums.forEach(num => num.addEventListener('click', setNum))
 
-let factorial = (x) => {
-    let total = 1;
-    for(i = x; i > 0; i--){
-        total *= i;
-    };
-    return total;
-};
+
+
+
+
+
