@@ -32,6 +32,11 @@ body {
     height: 30%;
 }
 
+.results {
+    height: 565px;
+    overflow: scroll;
+}
+
 .buttons {
     height: 75%;
     width: 100%;

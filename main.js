@@ -125,6 +125,21 @@ let delChar = () => {
     }
     theNum = theNum.slice(0,-1);
     viewer.textContent = viewer.textContent.slice(0, -1);
+};
+
+const addToHistory = () => {
+    const history = document.querySelector('.results');
+    const item = document.createElement('div');
+    const itemInput = document.createElement('div');
+    const itemResult = document.createElement('div');
+    history.prepend(item);
+    item.classList.add('item');
+    item.appendChild(itemInput);
+    itemInput.classList.add('itemInput');
+    item.appendChild(itemResult);
+    itemResult.classList.add('itemResult');
+    itemInput.textContent = pendNum.textContent;
+    itemResult.textContent = viewer.textContent;
 }
 
 
@@ -135,6 +150,7 @@ nums.forEach(num => num.addEventListener('click', setNum));
 delButton.addEventListener('click', delChar)
 ops.forEach(op => op.addEventListener('click', moveNum));
 equal.addEventListener('click', displayNumber);
+equal.addEventListener('click', addToHistory);
 clearButton.addEventListener('click', clear);
 
 
