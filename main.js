@@ -4,8 +4,9 @@ let nums = Array.from(document.querySelectorAll('.number'))
 let ops = Array.from(document.querySelectorAll('.operation')) 
 let pendNum = document.querySelector('.prev');
 let clearButton = document.querySelector('.del');
+let delButton = document.querySelector('.delete');
 
-let theNum = ""; 
+let theNum = "0"; 
 let oldNum = ""; 
 let resultNum; 
 let operator; 
@@ -30,14 +31,18 @@ let factorial = (x) => {
     return total;
 };
 
+
 let setNum = (e) => {
 
-    
+    if(viewer.textContent == "0"){
+        theNum = e.target.getAttribute('data-value');
+    } else {
         theNum += e.target.getAttribute('data-value');
-    
+    }
 
     viewer.textContent = theNum;
-    console.log(theNum)
+    console.log(theNum);
+    
 };
 
 let moveNum = (e) => {
@@ -48,6 +53,8 @@ let moveNum = (e) => {
     pendNum.textContent = `${oldNum} ${e.target.textContent}`;
 
     equal.setAttribute("data-result", "");
+    viewer.textContent = '0';
+
 }
 
 const displayNumber = () => {
@@ -96,6 +103,7 @@ const displayNumber = () => {
         }
     }
     console.log(resultNum);
+    pendNum.textContent += ` ${theNum}`;
     viewer.innerHTML = resultNum;
     equal.setAttribute('data-result', resultNum);
     oldNum = 0;
@@ -111,10 +119,20 @@ let clear = () => {
 };
 
 
+let delChar = () => {
+    if(!viewer.textContent){
+        return
+    }
+    theNum = theNum.slice(0,-1);
+    viewer.textContent = viewer.textContent.slice(0, -1);
+}
+
+
 
 
 
 nums.forEach(num => num.addEventListener('click', setNum));
+delButton.addEventListener('click', delChar)
 ops.forEach(op => op.addEventListener('click', moveNum));
 equal.addEventListener('click', displayNumber);
 clearButton.addEventListener('click', clear);
