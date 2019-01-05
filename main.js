@@ -12,6 +12,16 @@ let oldNum = "";
 let resultNum; 
 let operator; 
 
+const enableEqual = () => {
+    equal.disabled = false;
+}
+
+const disableEqual = () => {
+    equal.disabled = true;
+}
+
+disableEqual();
+
 let addition = (x,y) => x+y;
 
 let substraction = (x,y) => x-y;
@@ -56,6 +66,8 @@ let moveNum = (e) => {
     equal.setAttribute("data-result", "");
     viewer.textContent = '0';
     enableDecimal();
+
+    enableEqual();
 
 }
 
@@ -151,6 +163,7 @@ let disableDecimal = () => {
 const enableDecimal = () => {
     decimal.disabled = false;
 }
+
 
 
 nums.forEach(num => num.addEventListener('click', setNum));
