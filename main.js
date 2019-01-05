@@ -5,6 +5,7 @@ let ops = Array.from(document.querySelectorAll('.operation'))
 let pendNum = document.querySelector('.prev');
 let clearButton = document.querySelector('.del');
 let delButton = document.querySelector('.delete');
+let decimal = document.querySelector('.dot');
 
 let theNum = "0"; 
 let oldNum = ""; 
@@ -54,6 +55,7 @@ let moveNum = (e) => {
 
     equal.setAttribute("data-result", "");
     viewer.textContent = '0';
+    enableDecimal();
 
 }
 
@@ -108,6 +110,7 @@ const displayNumber = () => {
     equal.setAttribute('data-result', resultNum);
     oldNum = 0;
     theNum = resultNum;
+    enableDecimal();
 }
 
 let clear = () => {
@@ -117,7 +120,6 @@ let clear = () => {
     pendNum.textContent = "";
     equal.setAttribute('data-result', resultNum);
 };
-
 
 let delChar = () => {
     if(!viewer.textContent){
@@ -142,16 +144,23 @@ const addToHistory = () => {
     itemResult.textContent = viewer.textContent;
 }
 
+let disableDecimal = () => {
+    decimal.disabled = true;
+}
 
-
+const enableDecimal = () => {
+    decimal.disabled = false;
+}
 
 
 nums.forEach(num => num.addEventListener('click', setNum));
+decimal.addEventListener('click', disableDecimal);
 delButton.addEventListener('click', delChar)
 ops.forEach(op => op.addEventListener('click', moveNum));
 equal.addEventListener('click', displayNumber);
 equal.addEventListener('click', addToHistory);
 clearButton.addEventListener('click', clear);
+clearButton.addEventListener('click', enableDecimal);
 
 
 
