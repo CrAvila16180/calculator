@@ -1,11 +1,11 @@
-let viewer = document.querySelector('.displayNum'); 
-let equal = document.querySelector('.equal'); 
-let nums = Array.from(document.querySelectorAll('.number')) 
-let ops = Array.from(document.querySelectorAll('.operation')) 
-let pendNum = document.querySelector('.prev');
-let clearButton = document.querySelector('.del');
-let delButton = document.querySelector('.delete');
-let decimal = document.querySelector('.dot');
+const viewer = document.querySelector('.displayNum'); 
+const equal = document.querySelector('.equal'); 
+const nums = Array.from(document.querySelectorAll('.number')) 
+const ops = Array.from(document.querySelectorAll('.operation')) 
+const pendNum = document.querySelector('.prev');
+const clearButton = document.querySelector('.del');
+const delButton = document.querySelector('.delete');
+const decimal = document.querySelector('.dot');
 
 let theNum = "0"; 
 let oldNum = ""; 
@@ -22,19 +22,19 @@ const disableEqual = () => {
 
 disableEqual();
 
-let addition = (x,y) => x+y;
+const addition = (x,y) => x+y;
 
-let substraction = (x,y) => x-y;
+const substraction = (x,y) => x-y;
 
-multiplication = (x,y) => x*y;
+const multiplication = (x,y) => x*y;
 
-division = (x,y) => x/y;
+const division = (x,y) => x/y;
 
-sqrt = (x) => Math.sqrt(x);
+const sqrt = (x) => Math.sqrt(x);
 
-pow = (x,y) => Math.pow(x,y);
+const pow = (x,y) => Math.pow(x,y);
 
-let factorial = (x) => {
+const factorial = (x) => {
     let total = 1;
     for(i = x; i > 0; i--){
         total *= i;
@@ -43,7 +43,7 @@ let factorial = (x) => {
 };
 
 
-let setNum = (e) => {
+const setNum = (e) => {
 
     if(viewer.textContent == "0"){
         theNum = e.target.getAttribute('data-value');
@@ -56,7 +56,7 @@ let setNum = (e) => {
     
 };
 
-let moveNum = (e) => {
+const moveNum = (e) => {
     oldNum = theNum;
     theNum = '';
     operator = e.target.getAttribute('data-op');
@@ -125,7 +125,7 @@ const displayNumber = () => {
     enableDecimal();
 }
 
-let clear = () => {
+const clear = () => {
     oldNum = "";
     theNum = "";
     viewer.textContent = "0";
@@ -133,7 +133,7 @@ let clear = () => {
     equal.setAttribute('data-result', resultNum);
 };
 
-let delChar = () => {
+const delChar = () => {
     if(!viewer.textContent){
         return
     }
@@ -156,7 +156,7 @@ const addToHistory = () => {
     itemResult.textContent = viewer.textContent;
 }
 
-let disableDecimal = () => {
+const disableDecimal = () => {
     decimal.disabled = true;
 }
 
