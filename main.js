@@ -11,14 +11,23 @@ let theNum = "0";
 let oldNum = ""; 
 let resultNum; 
 let operator; 
+let complete;
 
 const enableEqual = () => {
     equal.disabled = false;
-}
+};
 
 const disableEqual = () => {
     equal.disabled = true;
-}
+};
+
+const enableDel = () => {
+    delButton.disabled = false;
+};
+
+const disableDel = () => {
+
+};
 
 disableEqual();
 
@@ -45,7 +54,7 @@ const factorial = (x) => {
 
 const setNum = (e) => {
 
-    if(viewer.textContent == "0"){
+    if(viewer.textContent == "0" || complete == true){
         theNum = e.target.getAttribute('data-value');
     } else {
         theNum += e.target.getAttribute('data-value');
@@ -66,47 +75,46 @@ const moveNum = (e) => {
     equal.setAttribute("data-result", "");
     viewer.textContent = '0';
     enableDecimal();
-
     enableEqual();
 
-}
+};
 
 const displayNumber = () => {
-    oldNum = parseFloat(oldNum);
-    theNum = parseFloat(theNum);
+    oldNum = parseFloat(oldNum).toFixed(2);
+    theNum = parseFloat(theNum).toFixed(2);
 
     switch (operator){
         case 'addition':
-        resultNum = addition(oldNum,theNum);
+        resultNum = addition(oldNum,theNum).toFixed(2);
         break;
 
         case 'substraction':
-        resultNum = substraction(oldNum,theNum);
+        resultNum = substraction(oldNum,theNum).toFixed(2);
         break;
 
         case 'multiplication':
-        resultNum = multiplication(oldNum,theNum);
+        resultNum = multiplication(oldNum,theNum).toFixed(2);
         break;
 
         case 'division':
-        resultNum = division(oldNum,theNum);
+        resultNum = division(oldNum,theNum).toFixed(2);
         break;
 
         case 'sqrt':
-        resultNum = sqrt(theNum);
+        resultNum = sqrt(theNum).toFixed(2);
         break;
 
         case 'pow':
-        resultNum = pow(theNum);
+        resultNum = pow(theNum).toFixed(2);
         break;
 
         case 'factorial':
-        resultNum = factorial(theNum);
+        resultNum = factorial(theNum).toFixed(2);
         break;
 
         default:
         resultNum = theNum;
-    }
+    };
 
     if (!isFinite(resultNum)){
         if (isNaN(resultNum)){
@@ -115,7 +123,8 @@ const displayNumber = () => {
             resultNum = 'rip';
 
         }
-    }
+    };
+
     console.log(resultNum);
     pendNum.textContent += ` ${theNum}`;
     viewer.innerHTML = resultNum;
@@ -123,7 +132,9 @@ const displayNumber = () => {
     oldNum = 0;
     theNum = resultNum;
     enableDecimal();
-}
+    complete = true;
+    console.log(complete)
+};
 
 const clear = () => {
     oldNum = "";
@@ -156,13 +167,6 @@ const addToHistory = () => {
     itemResult.textContent = viewer.textContent;
 }
 
-const disableDecimal = () => {
-    decimal.disabled = true;
-}
-
-const enableDecimal = () => {
-    decimal.disabled = false;
-}
 
 
 
