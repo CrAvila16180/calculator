@@ -26,8 +26,16 @@ const enableDel = () => {
 };
 
 const disableDel = () => {
-
+    delButton.disabled = true;
 };
+
+const disableDecimal = () => {
+    decimal.disabled = true;
+};
+
+const enableDecimal = () => {
+    decimal.disabled = false;
+}
 
 disableEqual();
 
@@ -54,7 +62,7 @@ const factorial = (x) => {
 
 const setNum = (e) => {
 
-    if(viewer.textContent == "0" || complete == true){
+    if(viewer.textContent == "0"){
         theNum = e.target.getAttribute('data-value');
     } else {
         theNum += e.target.getAttribute('data-value');
