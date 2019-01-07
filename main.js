@@ -69,6 +69,7 @@ const setNum = (e) => {
         
         theNum = e.target.getAttribute('data-value');
         complete = false;
+        
     }else {
         theNum += e.target.getAttribute('data-value');
     } 
@@ -79,6 +80,7 @@ const setNum = (e) => {
 };
 
 const moveNum = (e) => {
+    complete = false;
     oldNum = theNum;
     theNum = '';
     operator = e.target.getAttribute('data-op');
@@ -93,6 +95,7 @@ const moveNum = (e) => {
 };
 
 const displayNumber = () => {
+    
     oldNum = parseFloat(oldNum);
     theNum = parseFloat(theNum);
 
@@ -181,7 +184,7 @@ const addToHistory = () => {
     itemResult.classList.add('itemResult');
     itemInput.textContent = pendNum.textContent;
     itemResult.textContent = viewer.textContent;
-}
+};
 
 
 
