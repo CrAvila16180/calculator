@@ -61,12 +61,17 @@ const factorial = (x) => {
 
 
 const setNum = (e) => {
-
-    if(viewer.textContent == "0"){
+    
+    if(viewer.textContent == "0" || complete == true){
+        if(complete == true){
+            clear();
+        };
+        
         theNum = e.target.getAttribute('data-value');
-    } else {
+        complete = false;
+    }else {
         theNum += e.target.getAttribute('data-value');
-    }
+    } 
 
     viewer.textContent = theNum;
     console.log(theNum);
@@ -88,36 +93,36 @@ const moveNum = (e) => {
 };
 
 const displayNumber = () => {
-    oldNum = parseFloat(oldNum).toFixed(2);
-    theNum = parseFloat(theNum).toFixed(2);
+    oldNum = parseFloat(oldNum);
+    theNum = parseFloat(theNum);
 
     switch (operator){
         case 'addition':
-        resultNum = addition(oldNum,theNum).toFixed(2);
+        resultNum = addition(oldNum,theNum);
         break;
 
         case 'substraction':
-        resultNum = substraction(oldNum,theNum).toFixed(2);
+        resultNum = substraction(oldNum,theNum);
         break;
 
         case 'multiplication':
-        resultNum = multiplication(oldNum,theNum).toFixed(2);
+        resultNum = multiplication(oldNum,theNum);
         break;
 
         case 'division':
-        resultNum = division(oldNum,theNum).toFixed(2);
+        resultNum = division(oldNum,theNum);
         break;
 
         case 'sqrt':
-        resultNum = sqrt(theNum).toFixed(2);
+        resultNum = sqrt(theNum);
         break;
 
         case 'pow':
-        resultNum = pow(theNum).toFixed(2);
+        resultNum = pow(theNum);
         break;
 
         case 'factorial':
-        resultNum = factorial(theNum).toFixed(2);
+        resultNum = factorial(theNum);
         break;
 
         default:
@@ -161,6 +166,9 @@ const delChar = () => {
 };
 
 const addToHistory = () => {
+    if(resultNum == 'rip'){
+        return;
+    }
     const history = document.querySelector('.results');
     const item = document.createElement('div');
     const itemInput = document.createElement('div');
