@@ -76,7 +76,7 @@ const factorial = (x) => {
 //When typing  a number 
 
 const setNum = (e) => {
-    
+    enableDel();
     if(viewer.textContent == "0" || complete == true){
         if(complete == true){
             clear();
@@ -143,11 +143,13 @@ const displayNumber = () => {
             complete = true;
             disableEqual();
             disableOps();
+            disableDel();
         } else {
             resultNum = 'rip';
             complete = true;
             disableEqual();
             disableOps();
+            disableDel();
         }
     };
 
@@ -179,10 +181,9 @@ const moveNum = (e) => {
     operator = e.target.getAttribute('data-op');
     console.log(operator);
     pendNum.textContent = `${oldNum} ${e.target.textContent}`;
-
     equal.setAttribute("data-result", "");
     viewer.textContent = '0';
-    enableOps();
+    disableOps();
     enableDecimal();
     enableEqual();
 
