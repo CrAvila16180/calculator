@@ -1,3 +1,5 @@
+//HTML Buttons
+
 const viewer = document.querySelector('.displayNum'); 
 const equal = document.querySelector('.equal'); 
 const nums = Array.from(document.querySelectorAll('.number')) 
@@ -12,6 +14,16 @@ let oldNum = "";
 let resultNum; 
 let operator; 
 let complete;
+
+//Enables and disables buttons
+
+const enableOps = () => {
+    ops.forEach(op => op.disabled = false);
+};
+
+const disableOps = () => {
+    ops.forEach(op => op.disabled = true)
+};
 
 const enableEqual = () => {
     equal.disabled = false;
@@ -39,6 +51,8 @@ const enableDecimal = () => {
 
 disableEqual();
 
+//Operation Functions 
+
 const addition = (x,y) => x+y;
 
 const substraction = (x,y) => x-y;
@@ -59,6 +73,7 @@ const factorial = (x) => {
     return total;
 };
 
+//When typing  a number 
 
 const setNum = (e) => {
     
@@ -76,23 +91,13 @@ const setNum = (e) => {
 
     viewer.textContent = theNum;
     console.log(theNum);
+    enableOps();
     
 };
 
-const moveNum = (e) => {
-    complete = false;
-    oldNum = theNum;
-    theNum = '';
-    operator = e.target.getAttribute('data-op');
-    console.log(operator);
-    pendNum.textContent = `${oldNum} ${e.target.textContent}`;
 
-    equal.setAttribute("data-result", "");
-    viewer.textContent = '0';
-    enableDecimal();
-    enableEqual();
 
-};
+//When pressing equal
 
 const displayNumber = () => {
     
@@ -135,9 +140,14 @@ const displayNumber = () => {
     if (!isFinite(resultNum)){
         if (isNaN(resultNum)){
             resultNum = 'rip';
+            complete = true;
+            disableEqual();
+            disableOps();
         } else {
             resultNum = 'rip';
-
+            complete = true;
+            disableEqual();
+            disableOps();
         }
     };
 
@@ -158,6 +168,24 @@ const clear = () => {
     viewer.textContent = "0";
     pendNum.textContent = "";
     equal.setAttribute('data-result', resultNum);
+};
+
+//When pressing an operator 
+
+const moveNum = (e) => {
+    complete = false;
+    oldNum = theNum;
+    theNum = '';
+    operator = e.target.getAttribute('data-op');
+    console.log(operator);
+    pendNum.textContent = `${oldNum} ${e.target.textContent}`;
+
+    equal.setAttribute("data-result", "");
+    viewer.textContent = '0';
+    enableOps();
+    enableDecimal();
+    enableEqual();
+
 };
 
 const delChar = () => {
