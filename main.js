@@ -2,8 +2,8 @@
 
 const viewer = document.querySelector('.displayNum'); 
 const equal = document.querySelector('.equal'); 
-const nums = Array.from(document.querySelectorAll('.number')) 
-const ops = Array.from(document.querySelectorAll('.operation')) 
+const nums = Array.from(document.querySelectorAll('.number'));
+const ops = Array.from(document.querySelectorAll('.operation')); 
 const pendNum = document.querySelector('.prev');
 const clearButton = document.querySelector('.del');
 const delButton = document.querySelector('.delete');
@@ -50,6 +50,8 @@ const enableDecimal = () => {
 }
 
 disableEqual();
+disableOps();
+disableDel();
 
 //Operation Functions 
 
